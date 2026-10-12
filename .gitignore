@@ -1,10 +1,11 @@
-# Виртуальные окружения
+# ===== Виртуальные окружения =====
 venv/
 .venv/
 env/
 ENV/
+predictor-service/venv/
 
-# Python
+# ===== Python =====
 __pycache__/
 *.py[cod]
 *$py.class
@@ -14,37 +15,37 @@ build/
 dist/
 *.egg-info/
 .eggs/
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Jupyter
+# ===== Jupyter =====
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# ML модели и данные
+# ===== Модели и артефакты =====
+*.joblib
 *.pt
 *.pth
 *.h5
-*.pkl
-*.joblib
 *.cbm
-best_model.pt
-best_model_full.pt
-*.csv
-*.parquet
-*.xlsx
-data/
-datasets/
+*.model
 
-# IDE
+
+# ===== CatBoost =====
+catboost_info/
+*.log
+
+# ===== IDE =====
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# ОС
+# ===== ОС =====
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Логи и временные файлы
-*.log
+# ===== Временные файлы =====
 *.tmp
+*.bak
