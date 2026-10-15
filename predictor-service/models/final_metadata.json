@@ -1,5 +1,6 @@
 {
   "model_type": "CatBoost",
+  "artifact_status": "stale_requires_retraining",
   "n_features": 41,
   "n_train": 35000,
   "n_val": 7500,
@@ -15,5 +16,5 @@
     "bagging_temperature": 0.104705,
     "random_strength": 0.198779
   },
-  "note": "Удаление признаков с importance < 0.1% ухудшило MAPE на +0.15%. Используем полный набор."
+  "note": "This existing model and its metrics were produced with group aggregates computed over the full dataset. Rerun 08_final_model.ipynb to retrain and replace this stale artifact."
 }

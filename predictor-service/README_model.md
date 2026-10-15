@@ -10,10 +10,10 @@
 | 2 | [02_features.ipynb](02_features.ipynb) | Подготовка признаков и нормализация | — |
 | 3 | [03_boosting_baselines.ipynb](03_boosting_baselines.ipynb) | Первое сравнение моделей: CatBoost, LightGBM, XGBoost | CatBoost — MAPE 6,68 %, LightGBM — 7,15 %, XGBoost — 7,97 %, FlatNet — 8,17 %; среднее трёх бустингов — 6,79 %. |
 | 4 | [04_catboost_experiments.ipynb](04_catboost_experiments.ipynb) | Эксперименты с CatBoost | лучший — базовый CatBoost с RMSE: MAPE 6,73 % на валидации; Huber не сошёлся. |
-| 5 | [05_feature_engineering.ipynb](05_feature_engineering.ipynb) | Новые признаки и CatBoost на них | Optuna — MAPE 6,665 % на валидации; параметры сохранены в `best_catboost_params.json`. |
+| 5 | [05_feature_engineering.ipynb](05_feature_engineering.ipynb) | Новые признаки и CatBoost на них | Групповые агрегаты теперь fit-ятся только на train; сохранённый ранее результат 6,665 % относится к предыдущему варианту и требует пересчёта. |
 | 6 | [06_ensemble.ipynb](06_ensemble.ipynb) | Ансамбль CatBoost, LightGBM и XGBoost | CatBoost — 6,735 %, взвешенное среднее — 6,720 %, стекинг — 6,719 % MAPE на валидации. |
 | 7 | [07_neural_networks.ipynb](07_neural_networks.ipynb) | Эксперименты с нейросетями | нейросети уступают бустингам: лучшая — базовая NN v1 (MAPE 8,17 %), Wide & Deep — 10,28 %, TabNet — 11,11 %, Attention — 12,16 %. |
-| 8 | [08_final_model.ipynb](08_final_model.ipynb) | Важность признаков, проверка на тесте и финальная модель | на тесте MAPE 6,69 %, R² 0,976; остаётся 41 признак (на 20 признаках — 6,84 %), модель сохраняется в `final_catboost.pkl`. |
+| 8 | [08_final_model.ipynb](08_final_model.ipynb) | Важность признаков, проверка на тесте и финальная модель | Разбиение train/val/test — 70/15/15; групповые агрегаты вычисляются только по train. После запуска ячейки сохранения создаются `final_catboost.pkl`, `quantile_transformer.pkl`, `district_aggregates.json` и `final_metadata.json`. Выведенные ранее метрики требуют пересчёта. |
 
 ## Графики для отчёта
 
@@ -35,3 +35,5 @@
 Чтобы пересчитать, например, часть 3, выполните в её ядре по порядку `%run -i 01_eda.ipynb` и `%run -i 02_features.ipynb`,
 а затем её собственные ячейки. Данные лежат рядом, в `Moscow_Real_Estate/`, поэтому пути из кода (`./Moscow_Real_Estate/...`)
 работают из этой папки.
+
+В `08_final_model.ipynb` `QuantileTransformer` сохраняется как исходный fitted-экземпляр; список его числовых колонок и обученные медианы пропусков записываются в `final_metadata.json`. JSON агрегатов содержит только train-группы и train-средние fallback для неизвестных районов/станций. Изменённые ячейки необходимо выполнить заново: ранее сохранённая модель и её метрики получены с агрегатами по всему датасету.
