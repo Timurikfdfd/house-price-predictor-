@@ -1,0 +1,20 @@
+{
+  "model_type": "CatBoost",
+  "artifact_status": "stale_requires_retraining",
+  "n_features": 41,
+  "n_train": 35000,
+  "n_val": 7500,
+  "n_test": 7500,
+  "val_mape": 6.665,
+  "test_mape": 6.69,
+  "test_r2": 0.976,
+  "n_trees": 3138,
+  "best_params": {
+    "learning_rate": 0.0290398,
+    "depth": 7,
+    "l2_leaf_reg": 4.14278,
+    "bagging_temperature": 0.104705,
+    "random_strength": 0.198779
+  },
+  "note": "This existing model and its metrics were produced with group aggregates computed over the full dataset. Rerun 08_final_model.ipynb to retrain and replace this stale artifact."
+}

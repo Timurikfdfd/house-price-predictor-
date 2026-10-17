@@ -1,0 +1,21 @@
+{
+  "lr": 0.022200693661100723,
+  "depth": 7,
+  "l2": 1.581497095078856,
+  "bag": 0.3908550704137419,
+  "rs": 0.10585317304408139,
+  "iterations": 10000,
+  "loss_function": "RMSE",
+  "eval_metric": "MAPE",
+  "random_seed": 42,
+  "early_stopping_rounds": 300,
+  "verbose": 500,
+  "cat_features": [
+    0,
+    1,
+    13,
+    14,
+    9,
+    12
+  ]
+}
